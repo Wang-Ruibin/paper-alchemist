@@ -159,4 +159,12 @@ Your research materials do not need a fixed format. Provide file paths or answer
 
 MIT © 2026 Wang-Ruibin. See [LICENSE](LICENSE).
 
+---
+
+<div align="center">
+
 If Paper Alchemist helps your research writing, a Star would make this little alchemist smile. ✨
+
+[![Star History Chart](https://api.star-history.com/svg?repos=Wang-Ruibin/paper-alchemist&type=Date)](https://star-history.com/#Wang-Ruibin/paper-alchemist&Date)
+
+</div>

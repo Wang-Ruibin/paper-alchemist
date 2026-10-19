@@ -156,4 +156,12 @@ Agent 会按章节分别应用对应画像，再把各部分组合起来；摘�
 
 MIT © 2026 Wang-Ruibin。详见 [LICENSE](LICENSE)。
 
+---
+
+<div align="center">
+
 如果 Paper Alchemist 对你的研究写作有帮助，欢迎随手送它一颗 Star，让这位小炼金术士开心一下。✨
+
+[![Star History Chart](https://api.star-history.com/svg?repos=Wang-Ruibin/paper-alchemist&type=Date)](https://star-history.com/#Wang-Ruibin/paper-alchemist&Date)
+
+</div>

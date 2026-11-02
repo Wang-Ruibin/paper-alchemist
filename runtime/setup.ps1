@@ -2,7 +2,7 @@ param([switch]$ManagedPython)
 $ErrorActionPreference = 'Stop'
 $uvVersion = '0.13.6'
 $pluginRoot = Split-Path -Parent $PSScriptRoot
-$runtimeRoot = if ($env:PAPER_ALCHEMIST_RUNTIME) { [IO.Path]::GetFullPath($env:PAPER_ALCHEMIST_RUNTIME) } else { Join-Path $env:LOCALAPPDATA 'PaperAlchemist\runtime' }
+$runtimeRoot = if ($env:PAPER_ALCHEMIST_RUNTIME) { [IO.Path]::GetFullPath($env:PAPER_ALCHEMIST_RUNTIME) } else { Join-Path ([Environment]::GetFolderPath('UserProfile')) 'AppData\Local\PaperAlchemist\runtime' }
 $requirements = Join-Path $PSScriptRoot 'requirements.txt'
 $digest = (Get-FileHash -LiteralPath $requirements -Algorithm SHA256).Hash.ToLowerInvariant().Substring(0,16)
 $environmentPath = Join-Path $runtimeRoot "envs\$digest"

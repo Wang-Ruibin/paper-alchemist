@@ -37,11 +37,13 @@ when available, or prepare private Python 3.12. Pinned dependencies in
 plugin's own CLI is checked. No administrator, system Python, shell profile
 or system PATH change is required.
 
-Defaults: `%LOCALAPPDATA%/PaperAlchemist/runtime` on Windows;
+Defaults: `<Windows user profile>/AppData/Local/PaperAlchemist/runtime` on Windows;
 `${XDG_CACHE_HOME:-~/.cache}/paper-alchemist/runtime` on macOS/Linux. The optional
 `PAPER_ALCHEMIST_RUNTIME` overrides this with an absolute directory; preserve
 the user's choice in their execution environment. Windows and WSL use separate
-runtimes. Setup writes the interpreter location to `runtime.json`; launchers
+runtimes. Windows resolves the actual user profile rather than sandbox-redirected
+`LOCALAPPDATA`, so ordinary terminals and Codex share the prepared runtime.
+Setup writes the interpreter location to `runtime.json`; launchers
 select the environment using the dependency-file hash. Repeating setup is
 supported. Inspect exact paths and running processes before repairing a lock
 or an incomplete environment left by interrupted setup.

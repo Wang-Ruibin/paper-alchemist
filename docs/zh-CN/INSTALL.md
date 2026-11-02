@@ -31,10 +31,11 @@ sh runtime/setup.sh
 `runtime/requirements.txt` 固定依赖，通过 wheel 安装到独立环境，再验证本插件 CLI。
 无需管理员权限，不修改系统 Python、Shell 配置或 PATH。
 
-默认位置：Windows 为 `%LOCALAPPDATA%/PaperAlchemist/runtime`，macOS/Linux 为
+默认位置：Windows 为 `<Windows 用户目录>/AppData/Local/PaperAlchemist/runtime`，macOS/Linux 为
 `${XDG_CACHE_HOME:-~/.cache}/paper-alchemist/runtime`。可选变量
 `PAPER_ALCHEMIST_RUNTIME` 用绝对目录覆盖默认位置；在用户执行环境中保留其选择。
-Windows 与 WSL 使用各自环境。准备后将解释器位置写入 `runtime.json`，入口按依赖文件
+Windows 与 WSL 使用各自环境。Windows 使用实际用户目录定位，避免沙箱重定向
+`LOCALAPPDATA` 后找不到普通终端准备的运行环境。准备后将解释器位置写入 `runtime.json`，入口按依赖文件
 哈希选择环境，可重复运行。安装中断后若留下锁或不完整环境，先检查精确路径与运行进程，
 再修复。
 

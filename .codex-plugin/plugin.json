@@ -1,6 +1,6 @@
 {
   "name": "paper-alchemist",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "description": "Codex academic writing assistant with section-specific corpus distillation and grounded drafting.",
   "author": {
     "name": "Wang-Ruibin",

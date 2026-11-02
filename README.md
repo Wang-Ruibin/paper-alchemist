@@ -2,168 +2,124 @@
 
 # Paper Alchemist
 
-### Distill how great papers write. Draft with evidence, not invention.
+### Turn verified research materials into a professional paper, section by section.
 
-A cross-Agent Skill for learning bilingual academic-writing patterns and drafting from verified research facts.
+The empty edition provides paper distillation and writing tools without any distilled paper library. Add your own reference papers or import completed guidance before writing.
 
-[![CI](https://github.com/Wang-Ruibin/paper-alchemist/actions/workflows/ci.yml/badge.svg)](https://github.com/Wang-Ruibin/paper-alchemist/actions/workflows/ci.yml)
-[![Release](https://img.shields.io/github/v/release/Wang-Ruibin/paper-alchemist)](https://github.com/Wang-Ruibin/paper-alchemist/releases)
-[![Python](https://img.shields.io/badge/Python-3.11%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/)
-[![Agent Skills](https://img.shields.io/badge/Agent%20Skills-compatible-6f42c1)](https://agentskills.io/)
-[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Codex plugin](https://img.shields.io/badge/Codex-native_plugin-blue)](https://developers.openai.com/plugins/build/plugins)
+[![License: MIT](https://img.shields.io/badge/License-MIT-purple.svg)](LICENSE)
 
-**English** · [简体中文](README.zh-CN.md)
+**English** · [简体中文](README.zh-CN.md) · [Get started](#from-installation-to-your-first-paper) · [Installation guide](docs/INSTALL.md)
 
 </div>
 
 ## What it can do for you
 
-Paper Alchemist learns how different sections of reference papers organize ideas, develop arguments, and use academic language, then applies those patterns to your own writing.
+- Work on the abstract, introduction, related work, problem definition, methodology, experiment setup, results analysis and conclusion separately. Draft one section or assemble a full paper with consistent terminology, notation, numbers and citations.
+- Distill section-specific writing guidance from PDF, LaTeX, DOCX, Markdown or text papers, preserving source evidence and the scope of technical definitions.
+- Show which papers have been distilled, detect new, modified or renamed papers, and update guidance incrementally.
+- Import and export completed guidance for another project or computer without carrying the original papers.
+- Check drafts against verified research facts. Keep the manuscript academic and save operational and review records separately.
 
-- Learn separate patterns for abstracts, introductions, related work, problem definitions, methodologies, experiment setups, results analyses, and conclusions.
-- Draft or revise one section at a time, or combine the sections into a complete paper draft.
-- Learn from English and Chinese papers while keeping the target language natural.
-- Use only research facts and citations that you have confirmed, without copying content from reference papers.
-- Process papers and research materials locally without calling an additional LLM API.
+English writing and Chinese assistance have separate evidence. Guidance helps express and organize research; it does not supply your experimental results or bibliography.
 
-Reference papers provide experience about how to write. Your drafts, experiment records, and answers provide the facts to write about.
+## From installation to your first paper
 
-## Supported Agents
+You need:
 
-Paper Alchemist supports Codex, Claude Code, OpenCode, Hermes, Pi Agent, and Kimi Code. After installation, describe the papers you want to distill or the section you want to draft.
+- Codex with local plugin and terminal support, plus a project folder for your research materials.
+- Internet access for first-time setup. Codex prepares an isolated Python environment; you do not need to install Python, pip or configure PATH yourself.
 
-## From installation to writing
+Copy text labeled “send to Codex” into **Codex's chat input**, not PowerShell. You do not need to edit configuration files yourself.
 
-The entire workflow can be completed by talking to your Agent. You do not need to learn commands or prepare configuration files by hand.
+### 1. Ask Codex to install
 
-### 1. Ask your Agent to install it
-
-Send this to Codex, Claude Code, OpenCode, Hermes, Pi Agent, or Kimi Code:
-
-```text
-Install Paper Alchemist from https://github.com/Wang-Ruibin/paper-alchemist and
-configure it at user scope for the Agent you are currently running as. Check the
-environment, finish the installation, and verify that future sessions can use it.
-Do not overwrite an existing installation. Ask before installing or upgrading Python,
-PDF tools, or OCR components. Tell me whether I must start a new session when done.
-```
-
-Replace “user scope” with “project scope” to enable it only in the current research project.
-
-### 2. Ask your Agent to learn from reference papers
-
-Put the reference papers in a folder such as `./papers/`, then say:
+Send this to Codex:
 
 ```text
-Use Paper Alchemist to learn the writing patterns in ./papers and name the profile
-routing-literature. Complete the learning and checks for every paper section; do not
-stop after merely reading the files. Keep my papers and research materials out of
-version control. When finished, tell me whether the profile is ready for writing,
-which papers were used, and any limitations.
+Install Paper Alchemist from https://github.com/Wang-Ruibin/paper-alchemist.
+Read the repository README and docs/INSTALL.md first. Prepare its isolated runtime
+and install it using the native Codex plugin marketplace commands.
+Reuse a compatible Python, or prepare a private interpreter if none is available,
+without changing system PATH. Preserve my existing configuration and writing materials.
+Verify the actual installed plugin and runtime. Tell me whether I need a new
+conversation and what I can do next.
 ```
 
-This may take some time. The Agent continues reading papers, analyzing their sections, and synthesizing writing patterns. It pauses only when it needs a decision from you.
+After installation, start a new Codex conversation and use `$paper-alchemist`. If network access, GitHub permissions or your client version blocks setup, give Codex the full error so it can continue. You do not need to chain installation commands yourself. Downloads happen only during an explicit installation or upgrade.
 
-### 3. Wait until the profile is ready
+### 2. Prepare writing guidance
 
-When the profile is usable, you receive a clear summary such as:
-
-> **The `routing-literature` profile is ready for writing.** Eighteen papers were used and two could not be read. English evidence for results analysis is limited, so that section will be generated more cautiously.
-
-If the Agent says only that the papers were read or that some sections remain unfinished, reply: “Continue until the profile is ready for writing, then tell me.”
-
-### 4. Start writing your paper
-
-Tell the Agent which part you want to write first and where to find your existing research materials. These can include a draft, research notes, experiment tables, result files, or a BibTeX library.
+Send this to Codex:
 
 ```text
-Use the routing-literature profile to help me write an English related-work section.
-My research materials are in ./draft/, experiment results are in ./results/, and
-references are in ./references.bib. Read them first and organize the research facts
-and citations that can be used. Ask me about missing or unclear details in a few short
-rounds. After confirming the information, draft the section without adding unsupported facts.
+Use $paper-alchemist to help me create writing guidance. Ask where my reference papers
+are, check the inventory, and distill, synthesize and integrate their sections.
+Show completed and pending papers. Confirm writing readiness only when the required
+steps are complete. If I have an exported guidance package, help me import it instead.
 ```
 
-If your materials are not organized yet, say:
+You are done when Codex confirms that your guidance is ready for writing and explains its actual sources and scope. Extracting text alone is not completed distillation. This edition never brings in a private corpus automatically.
+
+### 3. Write a section or a complete paper
+
+Open your research project in Codex and provide verified method notes, models, result tables and references. Send:
 
 ```text
-Use the routing-literature profile to help me write an English abstract.
-My research materials are not organized yet. Ask me a few easy questions at a time
-to confirm the research problem, method, contributions, and results, then draft the abstract.
+Use $paper-alchemist to write an English paper from the verified research materials
+in this project. Check the materials first and ask about missing facts that matter.
+Apply the matching guidance to each section separately, write the abstract last,
+and reconcile terminology, notation, numbers and citations across the full paper.
+Save the manuscript as paper.md and main.tex, with review records in separate files.
+Keep only paper content in the manuscript, without an assistant preface, AI notice
+or workflow explanation.
 ```
 
-The Agent organizes and confirms only the information needed for the current section before drafting.
+For one section, say “Write the methodology from these notes; first verify each component's inputs, state changes and outputs.” You can also provide an existing draft for revision.
 
-## Generate one section or a complete draft
+You are done when the requested section or paper is delivered and its key facts trace to your materials. Exporting a PDF also needs a LaTeX compiler; ask Codex to prepare it separately and check the page layout when needed.
 
-Each section uses its matching writing profile. You can finish only the part you need now and return for other sections later.
+## Add papers or check for changes
 
-| What you want to write | What the Agent will confirm |
-|---|---|
-| Abstract | Research problem, prior gap, method, contributions, and main results |
-| Introduction | Background, precise problem, research gap, and contributions |
-| Related work | Research gap, literature groups, comparisons, and allowed citations |
-| Problem definition | Entities, assumptions, decisions, constraints, and objective |
-| Methodology | Purpose, overall approach, components, and design rationale |
-| Experiment setup | Datasets or instances, baselines, metrics, parameters, hardware, and seeds |
-| Results analysis | Comparisons, exact values, statistical evidence, explanations, and implications |
-| Conclusion | Verified findings, contributions, limitations, and supported next steps |
-
-For one section, simply say “draft the abstract first” or “generate only related work.” You can also give the Agent an existing section to revise using the profile.
-
-For a complete paper draft, say:
+Send this to Codex:
 
 ```text
-Use the routing-literature profile and my research materials to create a complete paper draft.
-First confirm the facts and citations needed across the paper. Then draft the introduction,
-related work, problem definition, methodology, experiment setup, results analysis,
-conclusion, and abstract as separate sections. Keep terminology, contribution statements,
-numbers, and citations consistent. Combine everything into one LaTeX file at
-./draft/paper.tex. Ask me before proceeding whenever research facts are missing.
+Use $paper-alchemist to show the distilled papers and scan the reference folder.
+Explain new, modified, renamed or removed papers first. Incrementally distill the
+changes I confirm while preserving existing guidance. If my new folder contains
+only added papers, attach it as an additional source rather than replacing the library.
 ```
 
-The Agent applies the matching profile to each section before combining them. The abstract is normally drafted last so that it remains consistent with the body.
+A scan does not repeat distillation. Added sources contribute to writing after review, synthesis and integration. Changes to original papers require review of guidance that no longer matches.
 
-## Supported materials
+## Use another project or computer
 
-Reference papers may be PDF, LaTeX, DOCX, Markdown, or plain text. Ordinary PDFs can be read directly. Scanned or low-text PDFs may require OCR; the Agent asks before installing extra components.
+Install once on a computer, then invoke the plugin in other research projects. To carry your own additions, ask Codex: “Export my complete writing guidance, including added papers, for import on another computer.”
 
-Your research materials do not need a fixed format. Provide file paths or answer questions in chat. Numbers, units, dataset names, baselines, experiment conditions, and citations must come from those materials or your explicit confirmation.
+Exports include reviewed writing rules, terminology and source records, without reference-paper prose, current research materials or drafts. Updating original papers later still requires reconnecting their folder.
 
-## What you receive
+## Runtime, privacy and scope
 
-- A reusable profile containing English and Chinese writing patterns for each paper section.
-- A concise distillation summary covering included papers, exclusions, and known limitations.
-- One section, several sections, or a complete paper draft according to your request.
-- Clear requests for missing information when the reference corpus or research facts are insufficient.
-
-## Writing boundaries
-
-- Reference papers teach organization and expression; they are not evidence for your research.
-- The profile does not imitate one author or preserve long source passages.
-- Paper Alchemist does not invent contributions, methods, datasets, baselines, parameters, results, significance, limitations, or citations.
-- Figures and tables may teach how to introduce and analyze visual evidence, but unlabelled values are never guessed from images.
-- Generated text is a paper draft that requires author review, not a replacement for academic judgment or factual verification.
+- Setup prepares a private runtime; ordinary writing commands do not download one. Windows and WSL use separate environments. No virtual-environment activation is needed.
+- The interpreter is downloaded for the current platform, rather than copying a developer's virtual environment into the plugin. An offline computer needs a prepared runtime for the same system and architecture; online setup is not an offline bundle.
+- Papers and research materials stay in your project. Local scripts do not call an additional model API; material read by Codex is still processed by the Codex service you use.
+- Do not invent methods, data, contributions, significance or references. Copy screening and automated review have limits; verify the research and target journal requirements before submission.
 
 ## Troubleshooting
 
-| Situation | What to do |
-|---|---|
-| The Agent cannot read a scanned PDF | Allow OCR installation and retry, or provide a PDF with a text layer |
-| A paper was not included | Ask the Agent whether extraction failed or recognizable sections were missing |
-| The profile remains unfinished | Ask the Agent to continue unfinished sections and stop only when your action is required |
-| The Agent keeps asking for writing facts | Provide draft, result, and bibliography paths, or confirm the missing facts one by one |
-| Generated text omits a result | Confirm that result and its exact value, then regenerate the affected section |
+Give Codex the full error and specify Windows, WSL, Linux or macOS. For an unprepared runtime, ask it to follow the [installation guide](docs/INSTALL.md). If the reference folder is unavailable, clarify whether you want to reuse completed guidance or update the original sources.
+
+For an upgrade, say “Update Paper Alchemist, preserve my writing guidance and research files, and verify the updated installation.”
 
 ## License
 
-MIT © 2026 Wang-Ruibin. See [LICENSE](LICENSE).
+[MIT](LICENSE). Author: Wang-Ruibin. Developer display name: misakimei0331.
 
 ---
 
 <div align="center">
 
-If Paper Alchemist helps your research writing, a Star would make this little alchemist smile. ✨
+If Paper Alchemist helps you express your research, a ⭐ Star would make this little project smile. ✨
 
 [![Star History Chart](https://api.star-history.com/svg?repos=Wang-Ruibin/paper-alchemist&type=Date)](https://star-history.com/#Wang-Ruibin/paper-alchemist&Date)
 

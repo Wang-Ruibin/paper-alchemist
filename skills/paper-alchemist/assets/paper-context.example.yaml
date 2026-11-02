@@ -1,0 +1,45 @@
+project:
+  title: "A descriptive paper title"
+  domain: "Operations research"
+  target_language: en
+  target_venue: "Optional venue name"
+
+research:
+  problem: "State the exact research problem."
+  gap: "State the evidence-backed gap in prior work."
+  contributions:
+    - "First verified contribution"
+    - "Second verified contribution"
+  method:
+    name: "Method or algorithm name"
+    summary: "What it does and why"
+    components:
+      - "Verified component"
+  experiments:
+    datasets_or_instances:
+      - "Dataset or benchmark"
+    baselines:
+      - "Baseline method"
+    metrics:
+      - "Metric and direction"
+    parameters: {}
+    hardware: "Only include when known"
+    random_seeds: "Only include when known"
+  results:
+    - claim: "Verified quantitative result"
+      value: "Exact value and unit"
+      comparison: "Verified comparison"
+      statistical_test: "Optional verified test"
+  limitations:
+    - "Verified limitation"
+
+# Authoring metadata, not scientific facts or article content.
+materials:
+  unprovided: []
+  author_checks_not_performed: []
+
+citations:
+  example2026:
+    purpose: "What this source supports"
+    verified_claims:
+      - "Claim that may be attributed to this key"

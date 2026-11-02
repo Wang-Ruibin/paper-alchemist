@@ -1,0 +1,20 @@
+{
+  "name": "paper-alchemist",
+  "interface": {
+    "displayName": "Paper Alchemist"
+  },
+  "plugins": [
+    {
+      "name": "paper-alchemist",
+      "source": {
+        "source": "local",
+        "path": "./"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

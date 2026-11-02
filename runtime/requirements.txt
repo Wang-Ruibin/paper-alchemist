@@ -1,0 +1,5 @@
+pypdf==6.10.0
+python-docx==1.2.0
+PyYAML==6.0.3
+lxml==6.0.2
+typing_extensions==4.15.0

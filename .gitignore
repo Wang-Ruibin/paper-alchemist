@@ -1,30 +1,57 @@
-# Python and test tooling
-__pycache__/
-*.py[cod]
-*.egg-info/
-.pytest_cache/
-.ruff_cache/
-.coverage
-htmlcov/
-.venv/
-venv/
-dist/
-build/
-*.skill
+# GitHub distributions contain only files needed to install and use the plugin.
+# Development files remain on this computer without being tracked.
+/*
+!/.gitignore
+!/.gitattributes
+!/README.md
+!/README.zh-CN.md
+!/LICENSE
+!/pyproject.toml
+!/MANIFEST.in
+!/.codex-plugin/
+/.codex-plugin/*
+!/.codex-plugin/plugin.json
+!/.agents/
+/.agents/*
+!/.agents/plugins/
+/.agents/plugins/*
+!/.agents/plugins/marketplace.json
+!/engine/
+/engine/*
+!/engine/*.py
+!/skills/
+!/runtime/
+/runtime/*
+!/runtime/setup.ps1
+!/runtime/setup.sh
+!/runtime/run.ps1
+!/runtime/run.sh
+!/runtime/requirements.txt
+!/runtime/downloads.tsv
+!/docs/
+/docs/*
+!/docs/INSTALL.md
+!/docs/zh-CN/
+/docs/zh-CN/*
+!/docs/zh-CN/INSTALL.md
 
-# Private research inputs and generated state
+# Source papers, research state and credentials always remain local.
 /.paper-alchemist/
 /paper-context.yaml
 /paper-context.local.yaml
 /papers/
 /corpus/
-*.pdf
-
-# Local-only development artifacts
-/tests/
-/examples/
 /.env
 /.env.*
-/test-artifacts/
-/scratch/
-*.local.md
+*.pdf
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+*.skill
+
+# This edition never ships a distilled library.
+/skills/paper-alchemist/assets/corpus/

@@ -1,4 +1,0 @@
-interface:
-  display_name: "Paper Alchemist"
-  short_description: "Distill bilingual paper styles and draft grounded sections"
-  default_prompt: "Use $paper-alchemist to distill a bilingual paper corpus or draft a grounded academic section."

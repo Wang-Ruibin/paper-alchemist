@@ -1,0 +1,26 @@
+{
+  "name": "paper-alchemist",
+  "version": "0.6.0",
+  "description": "Codex academic writing assistant with section-specific corpus distillation and grounded drafting.",
+  "author": {
+    "name": "Wang-Ruibin",
+    "url": "https://github.com/Wang-Ruibin"
+  },
+  "repository": "https://github.com/Wang-Ruibin/paper-alchemist",
+  "license": "MIT",
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Paper Alchemist",
+    "shortDescription": "Domain-specific academic writing for Codex",
+    "developerName": "misakimei0331",
+    "category": "Productivity",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Distill my reference papers into reusable section-specific writing guidance.",
+      "Import my reviewed guidance and write from verified research materials."
+    ]
+  }
+}

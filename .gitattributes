@@ -3,3 +3,8 @@
 *.bat text eol=crlf
 *.cmd text eol=crlf
 *.pdf binary
+
+# Bundled reviewed assets carry literal byte checksums across platforms.
+skills/paper-alchemist/assets/corpus/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+# Keep launcher scripts and dependency hashes identical across platforms.
+runtime/* text eol=lf

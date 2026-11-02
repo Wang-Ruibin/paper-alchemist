@@ -1,10 +1,12 @@
 include LICENSE
 include README.md
 include README.zh-CN.md
-include CHANGELOG.md
-include adapters/manifest.yaml
+include .codex-plugin/plugin.json
 recursive-include engine *.py
-recursive-include paper-alchemist *
+recursive-include skills *
+recursive-include runtime *
+include docs/INSTALL.md
+include docs/zh-CN/INSTALL.md
 prune tests
 prune examples
 global-exclude __pycache__ *.py[cod]

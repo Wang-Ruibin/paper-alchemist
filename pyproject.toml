@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "paper-alchemist"
-version = "0.3.0"
-description = "Cross-agent bilingual academic writing style distillation toolkit"
+version = "0.6.0"
+description = "Codex academic writing with domain-specific corpus profiles"
 readme = "README.md"
 requires-python = ">=3.11"
 license = "MIT"
@@ -17,15 +17,9 @@ classifiers = [
   "Topic :: Text Processing :: Linguistic",
 ]
 dependencies = [
-  "pypdf>=5.0,<7",
+  "pypdf>=6.10,<7",
   "python-docx>=1.1,<2",
   "PyYAML>=6,<7",
-]
-
-[project.optional-dependencies]
-dev = [
-  "build>=1.2,<2",
-  "ruff>=0.12,<1",
 ]
 
 [project.scripts]
@@ -41,20 +35,26 @@ packages = ["paper_alchemist"]
 package-dir = { paper_alchemist = "engine" }
 
 [tool.setuptools.data-files]
-"share/paper-alchemist/skills/paper-alchemist" = ["paper-alchemist/SKILL.md"]
-"share/paper-alchemist/skills/paper-alchemist/agents" = ["paper-alchemist/agents/openai.yaml"]
-"share/paper-alchemist/skills/paper-alchemist/assets" = ["paper-alchemist/assets/paper-context.example.yaml"]
-"share/paper-alchemist/skills/paper-alchemist/references" = [
-  "paper-alchemist/references/generation.md",
-  "paper-alchemist/references/platforms.md",
-  "paper-alchemist/references/schemas.md",
-  "paper-alchemist/references/workflow.md",
+"share/paper-alchemist/skills/paper-alchemist" = ["skills/paper-alchemist/SKILL.md"]
+"share/paper-alchemist/skills/paper-alchemist/agents" = ["skills/paper-alchemist/agents/openai.yaml"]
+"share/paper-alchemist/skills/paper-alchemist/assets" = ["skills/paper-alchemist/assets/paper-context.example.yaml"]
+"share/paper-alchemist/skills/paper-alchemist/assets/corpus" = [
+  "skills/paper-alchemist/assets/corpus/*.json",
+  "skills/paper-alchemist/assets/corpus/*.zip",
 ]
-"share/paper-alchemist/skills/paper-alchemist/scripts" = ["paper-alchemist/scripts/run.py"]
-
-[tool.ruff]
-target-version = "py311"
-line-length = 100
-
-[tool.ruff.lint]
-select = ["E4", "E7", "E9", "F", "I"]
+"share/paper-alchemist/skills/paper-alchemist/assets/corpus/copy-fingerprints" = [
+  "skills/paper-alchemist/assets/corpus/copy-fingerprints/*.json",
+]
+"share/paper-alchemist/skills/paper-alchemist/references" = [
+  "skills/paper-alchemist/references/generation.md",
+  "skills/paper-alchemist/references/platforms.md",
+  "skills/paper-alchemist/references/schemas.md",
+  "skills/paper-alchemist/references/workflow.md",
+  "skills/paper-alchemist/references/terminology.md",
+  "skills/paper-alchemist/references/draft-audit.md",
+  "skills/paper-alchemist/references/incremental.md",
+  "skills/paper-alchemist/references/portable.md",
+]
+"share/paper-alchemist/skills/paper-alchemist/scripts" = ["skills/paper-alchemist/scripts/run.py"]
+"share/paper-alchemist/skills/paper-alchemist/references/zh-CN" = ["skills/paper-alchemist/references/zh-CN/*.md"]
+"share/paper-alchemist/runtime" = ["runtime/*"]

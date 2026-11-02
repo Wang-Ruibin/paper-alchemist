@@ -1,0 +1,4 @@
+interface:
+  display_name: "Paper Alchemist"
+  short_description: "Write papers with reviewed domain guidance"
+  default_prompt: "Use $paper-alchemist to draft grounded paper sections with the included domain guidance, or distill additional papers."

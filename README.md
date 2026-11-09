@@ -2,9 +2,9 @@
 
 # Paper Alchemist
 
-### Turn verified research materials into a professional paper, section by section.
+### Plan research, write grounded papers, and turn review into verified revisions.
 
-The empty edition provides paper distillation and writing tools without any distilled paper library. Add your own reference papers or import completed guidance before writing.
+The empty edition provides research planning, literature evidence, manuscript review and writing workflows without a bundled paper library. Distill your own reference papers or import completed guidance before corpus-guided drafting.
 
 [![Codex plugin](https://img.shields.io/badge/Codex-native_plugin-blue)](https://developers.openai.com/plugins/build/plugins)
 [![License: MIT](https://img.shields.io/badge/License-MIT-purple.svg)](LICENSE)
@@ -15,11 +15,13 @@ The empty edition provides paper distillation and writing tools without any dist
 
 ## What it can do for you
 
+- Develop a research question and outline from your materials, compare method options, and identify the evidence still needed. Organize literature by what its inspected sources actually support.
 - Work on the abstract, introduction, related work, problem definition, methodology, experiment setup, results analysis and conclusion separately. Draft one section or assemble a full paper with consistent terminology, notation, numbers and citations.
 - Distill section-specific writing guidance from PDF, LaTeX, DOCX, Markdown or text papers, preserving source evidence and the scope of technical definitions.
 - Show which papers have been distilled, detect new, modified or renamed papers, and update guidance incrementally.
 - Import and export completed guidance for another project or computer without carrying the original papers.
 - Check drafts against verified research facts. Keep the manuscript academic and save operational and review records separately.
+- Review an existing manuscript from relevant scientific and editorial perspectives, then track every reviewer comment to a change, a supported reply or an unresolved item. Resume from current files and recheck affected judgments when materials change.
 
 English writing and Chinese assistance have separate evidence. Guidance helps express and organize research; it does not supply your experimental results or bibliography.
 
@@ -59,7 +61,7 @@ Show completed and pending papers. Confirm writing readiness only when the requi
 steps are complete. If I have an exported guidance package, help me import it instead.
 ```
 
-You are done when Codex confirms that your guidance is ready for writing and explains its actual sources and scope. Extracting text alone is not completed distillation. This edition never brings in a private corpus automatically.
+You are done when Codex confirms that your guidance is ready for writing and explains its actual sources and scope. Extracting text alone is not completed distillation. This edition never brings in a private corpus automatically. Planning, literature work and reviewing an existing draft can start first.
 
 ### 3. Write a section or a complete paper
 
@@ -75,9 +77,41 @@ Keep only paper content in the manuscript, without an assistant preface, AI noti
 or workflow explanation.
 ```
 
-For one section, say “Write the methodology from these notes; first verify each component's inputs, state changes and outputs.” You can also provide an existing draft for revision.
+For one section, say “Write the methodology from these notes; first verify each component's inputs, state changes and outputs.” You can also provide an existing draft for revision. Planning, literature work and reviewing a draft can start before you prepare writing guidance.
 
 You are done when the requested section or paper is delivered and its key facts trace to your materials. Exporting a PDF also needs a LaTeX compiler; ask Codex to prepare it separately and check the page layout when needed.
+
+## Plan, research, review or revise
+
+Start at the stage you need. You can ask for one task or connect the full workflow:
+
+```text
+Use $paper-alchemist to develop a research plan from my notes. Separate existing
+findings from proposals, identify the evidence gaps, and suggest a useful outline.
+For the literature, start with my references, verify sources you can access, and
+show which claims each source supports. Ask only about decisions or facts that matter.
+```
+
+For an existing draft and reviewer feedback, send:
+
+```text
+Use $paper-alchemist to review paper.md against my research materials and address
+reviewer-comments.txt. Account for every comment, make supported revisions, and
+verify the changes before writing the response. Save the revised manuscript as
+paper-revised.md, the response as response.md, and evidence and revision records
+under review/. Keep unresolved scientific questions visible in the review records.
+```
+
+You are done when the requested plan, synthesis, review or revision is delivered,
+its evidence can be located, and remaining questions are explicit. A reference
+entry alone does not verify a cited claim. Review feedback is Agent assistance;
+it does not establish independent peer review or predict journal acceptance.
+For a systematic review, explicitly ask for its search and screening protocol.
+
+For a longer project, ask Codex to resume from the saved research and review
+records. It checks the current versions before reusing earlier judgments.
+Workflow details and the local evidence checker are in the
+[research workflow reference](skills/paper-alchemist/references/research-workflow.md).
 
 ## Add papers or check for changes
 
@@ -103,6 +137,7 @@ Exports include reviewed writing rules, terminology and source records, without 
 - Setup prepares a private runtime; ordinary writing commands do not download one. Windows and WSL use separate environments. No virtual-environment activation is needed.
 - The interpreter is downloaded for the current platform, rather than copying a developer's virtual environment into the plugin. An offline computer needs a prepared runtime for the same system and architecture; online setup is not an offline bundle.
 - Papers and research materials stay in your project. Local scripts do not call an additional model API; material read by Codex is still processed by the Codex service you use.
+- Literature discovery uses the host's available search tools and public queries. Without source access, uninspected references remain unresolved. This release supports native Codex installation; its workflow guidance and local file contracts are reusable, while other hosts have not been validated.
 - Do not invent methods, data, contributions, significance or references. Copy screening and automated review have limits; verify the research and target journal requirements before submission.
 
 ## Troubleshooting
@@ -119,7 +154,7 @@ For an upgrade, say “Update Paper Alchemist, preserve my writing guidance and 
 
 <div align="center">
 
-If Paper Alchemist helps you express your research, a ⭐ Star would make this little project smile. ✨
+If Paper Alchemist helps your research read more clearly, a ⭐ Star would make this little project smile. ✨
 
 [![Star History Chart](https://api.star-history.com/svg?repos=Wang-Ruibin/paper-alchemist&type=Date)](https://star-history.com/#Wang-Ruibin/paper-alchemist&Date)
 

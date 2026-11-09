@@ -1,0 +1,57 @@
+# The Agent creates this optional record at a user-authorized path. Do not copy
+# placeholders as evidence. See references/research-workflow.md for the contract.
+schema_version: 1
+draft_sha256: REPLACE_WITH_CURRENT_TEXT_HASH
+context_sha256: REPLACE_WITH_CURRENT_CONTEXT_HASH
+
+# Paths are relative to --workspace; hashes cover raw file bytes. Evidence is
+# inspected UTF-8 text. PDF extraction needs a source/page-bound reading record.
+artifacts:
+  - id: reference-text
+    path: evidence/reference.txt
+    kind: literature
+    sha256: REPLACE_WITH_RAW_FILE_HASH
+  - id: reviewed-draft
+    path: versions/draft-v1.md
+    kind: draft
+    sha256: REPLACE_WITH_RAW_FILE_HASH
+  - id: review-report
+    path: reviews/reviewer-1.txt
+    kind: review
+    sha256: REPLACE_WITH_RAW_FILE_HASH
+
+claims:
+  - id: C1
+    start: 0
+    end: 1
+    text: REPLACE_WITH_EXACT_DRAFT_SPAN
+    context_paths: [research.problem]
+    assessment: unresolved
+    rationale: REPLACE_WITH_ACTUAL_SUPPORT_ASSESSMENT
+    evidence:
+      - artifact_id: reference-text
+        citation_key: example2026
+        locator: REPLACE_WITH_PAGE_SECTION_OR_TABLE
+        quote: REPLACE_WITH_EXACT_INSPECTED_SOURCE_TEXT
+        relation: insufficient
+        rationale: REPLACE_WITH_WHAT_THE_SOURCE_ACTUALLY_ESTABLISHES
+
+# Omit reviews and resolutions when no review was requested/performed.
+reviews:
+  - id: review-1
+    artifact_id: review-report
+    draft_artifact_id: reviewed-draft
+    reviewer: REPLACE_WITH_ACTUAL_REVIEWER
+    reviewer_kind: agent
+    comments:
+      - id: R1-1
+        text: REPLACE_WITH_EXACT_REVIEW_COMMENT
+        severity: major
+resolutions:
+  - comment_id: R1-1
+    action: deferred
+    rationale: REPLACE_WITH_CURRENT_REASON
+# For revised: also include start/end/text identifying the current change.
+# For rebutted: also include context_paths or evidence supporting the response.
+# Both require draft_sha256, context_sha256, verified_by and verifier_kind
+# (agent or human), recorded only after checking the current version.

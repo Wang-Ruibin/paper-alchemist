@@ -1,11 +1,11 @@
 ---
 name: paper-alchemist
-description: Distill corpus-level academic writing patterns from folders of English and Chinese PDF, LaTeX, DOCX, Markdown, or text papers; integrate module-specific bilingual profiles; and draft grounded abstracts, introductions, related work, problem definitions, methodologies, experiment setups, results analyses, conclusions, custom sections, or complete multi-section papers. Use when an Agent must analyze how a paper corpus writes, build or update a reusable style profile, or generate paper content from verified research facts without imitating one author or inventing evidence.
+description: Plan academic research, organize source-grounded literature, draft papers with corpus-specific writing guidance, review manuscripts, and trace revisions to reviewer comments. Use for research planning, literature evidence checks, corpus distillation, individual sections, full papers, or review and revision workflows; preserve verified facts without inventing results or references.
 ---
 
 # Paper Alchemist
 
-Use a deterministic local CLI for extraction and validation. Perform semantic distillation and drafting as Codex. Never call an LLM API from the bundled scripts.
+Use a deterministic local CLI for extraction and validation. The active Agent performs research, semantic distillation, drafting and review. Native packaging and installation target Codex; workflow records and Python commands do not depend on a particular Agent API. Never call an LLM API from the bundled scripts.
 
 ## Lead with the user's outcome
 
@@ -17,10 +17,13 @@ Use a deterministic local CLI for extraction and validation. Perform semantic di
 - Before reusing a profile for writing, run `scan-corpus` once for its registered folder. Follow [references/incremental.md](references/incremental.md) when changes are detected; preserve an already authorized update scope.
 - For a distillation request, extraction and seed creation are only intermediate results. Say that distillation is complete only after semantic synthesis and integration finish and `validate-profile` returns `generation_ready: true`.
 - Translate internal status into user outcomes. Lead with “the profile is ready for writing” or “the profile still needs work,” then explain included or excluded papers, limitations, and any action the user must take. Show raw fields or commands only when the user asks, when they are useful for reproducibility or troubleshooting, or when the user must run something the Agent cannot execute.
-- This is a Codex-only plugin. Use its packaged skill and local Python runtime; no other Agent adapter is needed.
+- Use the Codex-native entrypoint and local Python runtime. Follow the capability fallbacks in [references/research-workflow.md](references/research-workflow.md) when browsing, delegation or rendering is unavailable. Do not require Claude commands, hooks, extra model subscriptions or a multi-agent team.
 
 ## Choose the operation
 
+- For research planning, an end-to-end research/writing task or resuming an existing project, start with [references/research-workflow.md](references/research-workflow.md). Enter at the requested stage, preserve existing decisions and continue authorized work without routine stage-by-stage approval prompts.
+- For finding literature, checking references, building an evidence matrix or a systematic-review request, read [references/literature-evidence.md](references/literature-evidence.md). Literature discovery does not add papers to the style library or authorize study claims automatically.
+- For manuscript critique, reviewer reports, response letters or revisions, read [references/review-revision.md](references/review-revision.md). Review the actual version and account for every supplied comment; use `check-workflow` when persistent evidence/revision records are requested.
 - For `distill`, read [references/workflow.md](references/workflow.md) and execute the complete corpus workflow.
 - When a PDF's paragraphs mix columns or other layout blocks, use `compare-pdf-text` and inspect its candidates against original pages. Choose the coherent order from source evidence, create the reviewed source-hash map described in [references/incremental.md](references/incremental.md), and apply it through `distill --update --pdf-order-map`. Recheck section boundaries before semantic review; neither candidate length nor comparison success establishes distillation completion.
 - To show distilled papers, detect folder changes, or add papers to an existing profile, read [references/incremental.md](references/incremental.md). Use the plugin's inventory, review queue and semantic-recording commands; scanning alone is not distillation.

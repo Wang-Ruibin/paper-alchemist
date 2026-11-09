@@ -24,6 +24,7 @@ from .observations import record_observations
 from .packaging import package_plugin, package_skill, validate_plugin_bundle
 from .portable import export_profile, import_profile
 from .profiles import build_profile, integrate_profile, validate_profile
+from .research_workflow import check_workflow
 from .skill_validation import validate_skill_bundle
 from .terminology import load_registry, terminology_guidance
 
@@ -35,6 +36,14 @@ def parser() -> argparse.ArgumentParser:
     )
     root.add_argument("--version", action="version", version=f"%(prog)s {__version__}")
     sub = root.add_subparsers(dest="command", required=True)
+
+    workflow_check = sub.add_parser("check-workflow", help="Check registered source evidence and review-to-revision bindings locally")
+    workflow_check.add_argument("record", type=Path)
+    workflow_check.add_argument("--draft", type=Path, required=True)
+    workflow_check.add_argument("--context", type=Path, required=True)
+    workflow_check.add_argument("--workspace", type=Path, default=Path.cwd())
+    workflow_check.add_argument("--stage", choices=["review", "final"], default="review")
+    workflow_check.add_argument("--out", type=Path)
 
     audit = sub.add_parser("audit-draft", help="Check a draft and its fact-bound semantic review")
     audit.add_argument("draft", type=Path)
@@ -189,7 +198,24 @@ def main(argv: list[str] | None = None) -> int:
     args = parser().parse_args(argv)
     try:
         result: Any
-        if args.command == "compare-pdf-text":
+        if args.command == "check-workflow":
+            record = load_context(args.record)
+            if args.out:
+                protected = {args.record.resolve(), args.draft.resolve(), args.context.resolve()}
+                artifacts = record.get("artifacts", [])
+                if isinstance(artifacts, list):
+                    protected.update((args.workspace / row["path"]).resolve() for row in artifacts
+                                     if isinstance(row, dict) and isinstance(row.get("path"), str))
+                if args.out.resolve() in protected:
+                    raise ValueError("The workflow report cannot overwrite an input artifact")
+            result = check_workflow(record, args.draft.read_text(encoding="utf-8"),
+                                    load_context(args.context), args.workspace, args.stage)
+            if args.out:
+                args.out.parent.mkdir(parents=True, exist_ok=True)
+                args.out.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+            _print_json(result)
+            return 0 if result["traceability_ready"] else 2
+        elif args.command == "compare-pdf-text":
             _print_json(compare_pdf_text(args.source, args.workspace))
         elif args.command == "review-copy-fonts":
             from .pdf_font_reviews import save_reviewed_copy_candidate

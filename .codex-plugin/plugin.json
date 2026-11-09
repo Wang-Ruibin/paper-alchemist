@@ -1,7 +1,7 @@
 {
   "name": "paper-alchemist",
-  "version": "0.6.1",
-  "description": "Codex academic writing assistant with section-specific corpus distillation and grounded drafting.",
+  "version": "0.7.0",
+  "description": "Codex research planning, literature evidence, corpus-guided writing and traceable manuscript review and revision.",
   "author": {
     "name": "Wang-Ruibin",
     "url": "https://github.com/Wang-Ruibin"
@@ -11,7 +11,7 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "Paper Alchemist",
-    "shortDescription": "Domain-specific academic writing for Codex",
+    "shortDescription": "Plan, write, review and revise research",
     "developerName": "misakimei0331",
     "category": "Productivity",
     "capabilities": [
@@ -19,8 +19,8 @@
       "Write"
     ],
     "defaultPrompt": [
-      "Distill my reference papers into reusable section-specific writing guidance.",
-      "Import my reviewed guidance and write from verified research materials."
+      "Plan research, verify literature evidence, or review and revise an existing manuscript.",
+      "Distill or import my own writing guidance, then draft from verified research materials."
     ]
   }
 }

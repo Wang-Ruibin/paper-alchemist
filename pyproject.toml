@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "paper-alchemist"
-version = "0.6.1"
-description = "Codex academic writing with domain-specific corpus profiles"
+version = "0.7.0"
+description = "Codex research planning, grounded writing and traceable manuscript revision"
 readme = "README.md"
 requires-python = ">=3.11"
 license = "MIT"
@@ -37,7 +37,10 @@ package-dir = { paper_alchemist = "engine" }
 [tool.setuptools.data-files]
 "share/paper-alchemist/skills/paper-alchemist" = ["skills/paper-alchemist/SKILL.md"]
 "share/paper-alchemist/skills/paper-alchemist/agents" = ["skills/paper-alchemist/agents/openai.yaml"]
-"share/paper-alchemist/skills/paper-alchemist/assets" = ["skills/paper-alchemist/assets/paper-context.example.yaml"]
+"share/paper-alchemist/skills/paper-alchemist/assets" = [
+  "skills/paper-alchemist/assets/paper-context.example.yaml",
+  "skills/paper-alchemist/assets/workflow-record.example.yaml",
+]
 "share/paper-alchemist/skills/paper-alchemist/assets/corpus" = [
   "skills/paper-alchemist/assets/corpus/*.json",
   "skills/paper-alchemist/assets/corpus/*.zip",
@@ -54,6 +57,9 @@ package-dir = { paper_alchemist = "engine" }
   "skills/paper-alchemist/references/draft-audit.md",
   "skills/paper-alchemist/references/incremental.md",
   "skills/paper-alchemist/references/portable.md",
+  "skills/paper-alchemist/references/research-workflow.md",
+  "skills/paper-alchemist/references/literature-evidence.md",
+  "skills/paper-alchemist/references/review-revision.md",
 ]
 "share/paper-alchemist/skills/paper-alchemist/scripts" = ["skills/paper-alchemist/scripts/run.py"]
 "share/paper-alchemist/skills/paper-alchemist/references/zh-CN" = ["skills/paper-alchemist/references/zh-CN/*.md"]
